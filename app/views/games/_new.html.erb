@@ -1,0 +1,7 @@
+<%= form_for @game do |f| %>
+
+  <%= label_tag(:line, "Line:") %>
+  <%= f.text_field :line %><br>
+
+  <%= f.submit "Create" %><br>
+<% end %>

@@ -1,0 +1,17 @@
+<h3>Enter your line to calculate total score!</h3>
+<%= render "new" %>
+
+<table>
+    <tr>
+        <th>Line</th>
+        <th>Total score</th>
+        <th>           </th>
+    </tr>
+    <% @games.each do |game| %>
+        <tr>
+            <td><%= game.line %></td>
+            <td><%= game.total_score%></td>
+            <td><%= link_to "delete", game, method: :delete, data: { confirm: "You sure?" }%></td>
+        </tr>
+    <% end %>
+</table>
