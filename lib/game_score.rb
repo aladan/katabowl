@@ -1,27 +1,31 @@
 class GameScore
     def self.calculate(rolls)
-        frame = 0.0
-        i = 0
-        sum = 0
+        begin
+            frame = 0.0
+            i = 0
+            sum = 0
 
-        rolls.downcase!
-        scores = to_num_arr(rolls)
+            rolls.downcase!
+            scores = to_num_arr(rolls)
 
-        while frame < 10 do
-            case rolls[i]
-            when '/'
-                sum+= scores[i] + scores[i-1]
-                frame+=0.5
-            when 'x'
-                sum+= scores[i] + scores[i+1] + scores[i+2]
-                frame+=1
-            else
-                sum+=scores[i]
-                frame+=0.5
+            while frame < 10 do
+                case rolls[i]
+                when '/'
+                    sum+= scores[i] + scores[i-1]
+                    frame+=0.5
+                when 'x'
+                    sum+= scores[i] + scores[i+1] + scores[i+2]
+                    frame+=1
+                else
+                    sum+=scores[i]
+                    frame+=0.5
+                end
+                i+=1
             end
-            i+=1
+            sum
+        rescue
+            raise GameScoreError
         end
-        sum
     end
 
     def self.to_num_arr(str)
@@ -40,4 +44,10 @@ class GameScore
     end
 
     private_class_method :to_num_arr
+end
+
+class GameScoreError < StandardError
+def initialize(msg='Value can not be calculated!')
+    super
+  end
 end
