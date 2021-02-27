@@ -6,7 +6,7 @@ class Game < ApplicationRecord
 
     def calculate_total_score
         score = begin
-            score = GameScore.calculate(self.line)
+            GameScore.calculate(self.line)
         rescue StandardError
             nil
         end
