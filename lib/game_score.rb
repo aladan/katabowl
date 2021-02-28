@@ -11,7 +11,7 @@ class GameScore
             while frame < 10 do
                 case rolls[i]
                 when '/'
-                    sum+= scores[i] + scores[i-1]
+                    sum+= scores[i] + scores[i+1]
                     frame+=0.5
                 when 'x'
                     sum+= scores[i] + scores[i+1] + scores[i+2]
